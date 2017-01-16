@@ -1,7 +1,7 @@
-/*! Hammer.JS - v2.0.7 - 2016-04-22
+/*! Hammer.JS - v2.0.8 - 2017-01-16
  * http://hammerjs.github.io/
  *
- * Copyright (c) 2016 Jorik Tangelder;
+ * Copyright (c) 2017 Jorik Tangelder;
  * Licensed under the MIT license */
 (function(window, document, exportName, undefined) {
   'use strict';
@@ -805,11 +805,11 @@ inherit(MouseInput, Input, {
         var eventType = MOUSE_INPUT_MAP[ev.type];
 
         // on start we want to have the left mouse button down
-        if (eventType & INPUT_START && ev.button === 0) {
+        if (eventType & INPUT_START && ev.button >= 0) {
             this.pressed = true;
         }
 
-        if (eventType & INPUT_MOVE && ev.which !== 1) {
+        if (eventType & INPUT_MOVE && !ev.which) {
             eventType = INPUT_END;
         }
 
@@ -2145,7 +2145,7 @@ function Hammer(element, options) {
 /**
  * @const {string}
  */
-Hammer.VERSION = '2.0.7';
+Hammer.VERSION = '2.0.8';
 
 /**
  * default settings
